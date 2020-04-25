@@ -10,26 +10,15 @@ import technicalblog.Service.PostService;
 import java.util.ArrayList;
 
 @Controller
-
-public class HomeController {
-
-    public HomeController()
-    {
-        System.out.println("*** Home Controller ***");
-    }
+public class PostController {
 
     @Autowired
     private PostService postservice;
 
-    @RequestMapping("/")
-    public String getAllPosts(Model model) {
-
-
-        ArrayList<Post> posts = postservice.getAllPosts();
+    @RequestMapping("posts")
+    public String getUserPosts(Model model) {
+        ArrayList<Post> posts = postservice.getOnePost();
         model.addAttribute("posts", posts);
-
-        return "index";
-
+        return "posts";
     }
-
 }
